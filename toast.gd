@@ -14,3 +14,6 @@ func show_message(text):
 	
 func _ready():
 	add_to_group("toast")
+	if GameState. message != "":
+		show_message(GameState.message)#
+		GameState.message = ""

@@ -46,12 +46,16 @@ func shake_icon():
 func _on_hunger_timer_timeout() -> void:
 	change_health(-5)
 	
-func game_over():
+func game_over(message = "The bird fainted from hunger!"):
 	$"Hunger Timer".stop()
+	%GameOverLabel.text = message
 	%GameOver.visible = true
+	get_tree().paused = true
 	%RestartButton.grab_focus()
 	
 func restart():
+	get_tree().paused = false
+	GameState.reset()
 	get_tree().reload_current_scene()
 
 

@@ -32,6 +32,7 @@ func ask (what):
 func do_action():
 	get_tree().paused= false
 	if action ==  "restart":
+		GameState.reset()
 		get_tree().reload_current_scene()
 	else:
 		get_tree().quit()

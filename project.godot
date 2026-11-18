@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Seed Thief v1"
+config/name="Fowl Play v1"
 run/main_scene="uid://bxql0s1d2g4fh"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*uid://b74oftkis0f8e"
 
 [display]
 

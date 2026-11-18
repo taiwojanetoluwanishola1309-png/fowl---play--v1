@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://bg4ubq4mx6kg5" path="res://bird_angry.gd" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1niu"]
-size = Vector2(88.88889, 91.111115)
+size = Vector2(25, 30)
 
 [node name="player" type="CharacterBody2D" unique_id=43035165]
+motion_mode = 1
 script = ExtResource("2_onrkg")
 
 [node name="BirdAngry" type="Sprite2D" parent="." unique_id=1310503103]
@@ -18,5 +19,5 @@ texture = ExtResource("1_4flbx")
 zoom = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=266007570]
-position = Vector2(2.2222223, 1.1111112)
+position = Vector2(2.500001, 5)
 shape = SubResource("RectangleShape2D_o1niu")
