@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxutqp0hti8vw"
-path="res://.godot/imported/bench.png-3aee9bd1c27c595cfd48123167057493.ctex"
+path="res://.godot/imported/bench.png-ef0bdb43d1a3e9281cd79b956cd7bc51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/objects/bench.png"
-dest_files=["res://.godot/imported/bench.png-3aee9bd1c27c595cfd48123167057493.ctex"]
+source_file="res://Scene/graphics/objects/bench.png"
+dest_files=["res://.godot/imported/bench.png-ef0bdb43d1a3e9281cd79b956cd7bc51.ctex"]
 
 [params]
 

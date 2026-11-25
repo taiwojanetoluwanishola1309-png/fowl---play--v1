@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dr201ov4c76pb"
-path="res://.godot/imported/Crackman.otf-07c10da7ed8c2bafac2e3556ecebe10c.fontdata"
+path="res://.godot/imported/Crackman.otf-aecfc3bd946bb123d3a3886fa0f025ef.fontdata"
 
 [deps]
 
-source_file="res://fonts/Crackman.otf"
-dest_files=["res://.godot/imported/Crackman.otf-07c10da7ed8c2bafac2e3556ecebe10c.fontdata"]
+source_file="res://Scene/fonts/Crackman.otf"
+dest_files=["res://.godot/imported/Crackman.otf-aecfc3bd946bb123d3a3886fa0f025ef.fontdata"]
 
 [params]
 

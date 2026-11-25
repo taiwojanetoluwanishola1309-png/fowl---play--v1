@@ -48,7 +48,7 @@ func _on_hunger_timer_timeout() -> void:
 	
 func game_over(message = "The bird fainted from hunger!"):
 	$"Hunger Timer".stop()
-	%GameOverLabel.text = message
+	%GameOverLabel.text = message + "\nScore: " + str(GameState.score)
 	%GameOver.visible = true
 	get_tree().paused = true
 	%RestartButton.grab_focus()
