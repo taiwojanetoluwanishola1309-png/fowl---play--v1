@@ -1,10 +1,69 @@
 [gd_scene format=3 uid="uid://cylah8wdw08bf"]
 
 [ext_resource type="Theme" uid="uid://crm1xp42ja55r" path="res://ui_theme.tres" id="1_numba"]
-[ext_resource type="Texture2D" uid="uid://c4utwcjl0yg76" path="res://bird_angry.png" id="2_qvyh3"]
+[ext_resource type="Texture2D" uid="uid://6wpukhfj64d3" path="res://bird_bluetit_v2.png" id="2_cs65m"]
 [ext_resource type="Script" uid="uid://gthcggyy4r6w" path="res://health_bar.gd" id="3_6404c"]
+[ext_resource type="Script" uid="uid://3hro433qc5g1" path="res://warning_row.gd" id="4_6u17b"]
 [ext_resource type="Script" uid="uid://bd1mfjqu2linh" path="res://toast.gd" id="4_prlie"]
+[ext_resource type="Script" uid="uid://bukb26ba8vapa" path="res://outrage_bar.gd" id="5_6v4nf"]
 [ext_resource type="Script" uid="uid://dpvbrdmiyxox3" path="res://pause_menu.gd" id="5_sgvxv"]
+[ext_resource type="Texture2D" uid="uid://rwji6a7u6fb2" path="res://player_animations.png" id="5_tickc"]
+[ext_resource type="Script" uid="uid://diydiplbmjioh" path="res://animated_sprite_2d.gd" id="6_yleec"]
+[ext_resource type="Script" uid="uid://wygvoeubpv0m" path="res://red_flash.gd" id="7_qapw1"]
+[ext_resource type="Script" uid="uid://bohjrhrx4kb22" path="res://score_label.gd" id="8_cs65m"]
+[ext_resource type="Texture2D" uid="uid://c6qvo1eqqbab0" path="res://UI design document/basket_icon.png" id="8_glex8"]
+[ext_resource type="Script" uid="uid://blffmc7k6ht70" path="res://stash_bar.gd" id="9_dcp1o"]
+[ext_resource type="Texture2D" uid="uid://cd3jikr4sypqo" path="res://star_silver.png" id="10_4vcm2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryrav"]
+atlas = ExtResource("5_tickc")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eow3j"]
+atlas = ExtResource("5_tickc")
+region = Rect2(672, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5wjh"]
+atlas = ExtResource("5_tickc")
+region = Rect2(624, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vef74"]
+atlas = ExtResource("5_tickc")
+region = Rect2(720, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jktm"]
+atlas = ExtResource("5_tickc")
+region = Rect2(624, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hve3p"]
+atlas = ExtResource("5_tickc")
+region = Rect2(720, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yleec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryrav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eow3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5wjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vef74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jktm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hve3p")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="UI" type="CanvasLayer" unique_id=1994054833]
 
@@ -29,29 +88,6 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HealthRow" type="HBoxContainer" parent="Root/HUD" unique_id=1350758651]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="HealthIcon" type="TextureRect" parent="Root/HUD/HealthRow" unique_id=1225738860]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("2_qvyh3")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="HealthBar" type="ProgressBar" parent="Root/HUD/HealthRow" unique_id=1959097343]
-custom_minimum_size = Vector2(250, 30)
-layout_mode = 2
-size_flags_vertical = 4
-value = 100.0
-script = ExtResource("3_6404c")
-
-[node name="Hunger Timer" type="Timer" parent="Root/HUD/HealthRow/HealthBar" unique_id=79467356]
-wait_time = 3.0
-autostart = true
-
 [node name="PauseButton" type="Button" parent="Root/HUD" unique_id=1736181872]
 unique_name_in_owner = true
 layout_mode = 2
@@ -59,6 +95,142 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 focus_mode = 0
 text = "Pause (P)"
+
+[node name="OutrageRow" type="HBoxContainer" parent="Root/HUD" unique_id=2108843073]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="FarmerIcon" type="Control" parent="Root/HUD/OutrageRow" unique_id=1028332832]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Root/HUD/OutrageRow/FarmerIcon" unique_id=724001152]
+position = Vector2(16, 16)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_yleec")
+autoplay = "default"
+script = ExtResource("6_yleec")
+
+[node name="OutrageLabel" type="Label" parent="Root/HUD/OutrageRow" unique_id=205072938]
+layout_mode = 2
+text = "OUTRAGE"
+
+[node name="OutrageBar" type="ProgressBar" parent="Root/HUD/OutrageRow" unique_id=1113358355]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_vertical = 4
+show_percentage = false
+script = ExtResource("5_6v4nf")
+
+[node name="StatsColumn" type="VBoxContainer" parent="Root/HUD" unique_id=1805800142]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HealthRow" type="HBoxContainer" parent="Root/HUD/StatsColumn" unique_id=1350758651]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HealthIcon" type="TextureRect" parent="Root/HUD/StatsColumn/HealthRow" unique_id=1225738860]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("2_cs65m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HealthBar" type="ProgressBar" parent="Root/HUD/StatsColumn/HealthRow" unique_id=1959097343]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+script = ExtResource("3_6404c")
+
+[node name="Hunger Timer" type="Timer" parent="Root/HUD/StatsColumn/HealthRow/HealthBar" unique_id=79467356]
+wait_time = 3.0
+autostart = true
+
+[node name="WarningRow" type="HBoxContainer" parent="Root/HUD/StatsColumn/HealthRow" unique_id=727243683]
+layout_mode = 2
+script = ExtResource("4_6u17b")
+
+[node name="Life1" type="TextureRect" parent="Root/HUD/StatsColumn/HealthRow/WarningRow" unique_id=74178349]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_cs65m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Life2" type="TextureRect" parent="Root/HUD/StatsColumn/HealthRow/WarningRow" unique_id=52157160]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_cs65m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Life3" type="TextureRect" parent="Root/HUD/StatsColumn/HealthRow/WarningRow" unique_id=1341915602]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_cs65m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StashRow" type="HBoxContainer" parent="Root/HUD/StatsColumn" unique_id=407560406]
+layout_mode = 2
+
+[node name="BasketIcon" type="TextureRect" parent="Root/HUD/StatsColumn/StashRow" unique_id=551487368]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("8_glex8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StashBar" type="ProgressBar" parent="Root/HUD/StatsColumn/StashRow" unique_id=325350330]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_vertical = 4
+show_percentage = false
+script = ExtResource("9_dcp1o")
+
+[node name="StashText" type="Label" parent="Root/HUD/StatsColumn/StashRow/StashBar" unique_id=1843846302]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/30
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreBadge" type="PanelContainer" parent="Root/HUD/StatsColumn/StashRow" unique_id=1082117534]
+layout_mode = 2
+
+[node name="BadgeRow" type="HBoxContainer" parent="Root/HUD/StatsColumn/StashRow/ScoreBadge" unique_id=1614355691]
+layout_mode = 2
+
+[node name="StarIcon" type="TextureRect" parent="Root/HUD/StatsColumn/StashRow/ScoreBadge/BadgeRow" unique_id=1129759159]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("10_4vcm2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScoreLabel" type="Label" parent="Root/HUD/StatsColumn/StashRow/ScoreBadge/BadgeRow" unique_id=207246555]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.9411765, 0.95686275, 0.98039216, 1)
+text = "0
+"
+script = ExtResource("8_cs65m")
 
 [node name="GameOver" type="CenterContainer" parent="Root" unique_id=1825329239]
 unique_name_in_owner = true
@@ -167,5 +339,18 @@ text = "Quit"
 unique_name_in_owner = true
 title = "Are you sure?"
 
-[connection signal="timeout" from="Root/HUD/HealthRow/HealthBar/Hunger Timer" to="Root/HUD/HealthRow/HealthBar" method="_on_hunger_timer_timeout"]
-[connection signal="pressed" from="Root/GameOver/PanelContainer/VBoxContainer/RestartButton" to="Root/HUD/HealthRow/HealthBar" method="_on_restart_button_pressed"]
+[node name="RedFlash" type="ColorRect" parent="Root" unique_id=565292902]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+script = ExtResource("7_qapw1")
+
+[connection signal="timeout" from="Root/HUD/StatsColumn/HealthRow/HealthBar/Hunger Timer" to="Root/HUD/StatsColumn/HealthRow/HealthBar" method="_on_hunger_timer_timeout"]
+[connection signal="pressed" from="Root/GameOver/PanelContainer/VBoxContainer/RestartButton" to="Root/HUD/StatsColumn/HealthRow/HealthBar" method="_on_restart_button_pressed"]

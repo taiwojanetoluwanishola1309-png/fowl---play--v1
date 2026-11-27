@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cylah8wdw08bf" path="res://uiassignment .tscn" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://b8q8ongby048f" path="res://farmer.gd" id="7_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://chu5srue3sni1" path="res://nest.png" id="10_hve3p"]
+[ext_resource type="NavigationPolygon" uid="uid://c03wxou3lbcc7" path="res://farm_nav.tres" id="13_lc2xo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7jktm"]
 texture = ExtResource("1_fc0e3")
@@ -130,10 +131,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8el28"]
-size = Vector2(18.823534, 9.5)
+size = Vector2(10, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udolg"]
-size = Vector2(50, 48)
+size = Vector2(28, 36)
 
 [sub_resource type="LabelSettings" id="LabelSettings_j5wjh"]
 font_size = 40
@@ -195,10 +196,10 @@ shape = SubResource("CircleShape2D_8el28")
 [node name="player" parent="." unique_id=1270623374 instance=ExtResource("2_feb5d")]
 position = Vector2(-150, 110)
 
-[node name="On the road" parent="." unique_id=895390702 instance=ExtResource("3_feb5d")]
+[node name="On the road" parent="." unique_id=895390702 groups=["nav_obstacles"] instance=ExtResource("3_feb5d")]
 position = Vector2(21, 36)
 
-[node name="trees" parent="." unique_id=1910755447 instance=ExtResource("4_7jktm")]
+[node name="trees" parent="." unique_id=1910755447 groups=["nav_obstacles"] instance=ExtResource("4_7jktm")]
 position = Vector2(341, -12)
 
 [node name="borders" type="Node2D" parent="." unique_id=181043294]
@@ -358,14 +359,13 @@ autoplay = "default"
 frame_progress = 0.1220212
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer" unique_id=1680859632]
-position = Vector2(0, 4)
-scale = Vector2(2.125, 4)
+position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_8el28")
 
 [node name="CatchArea" type="Area2D" parent="Farmer" unique_id=361598252]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer/CatchArea" unique_id=2068533896]
-position = Vector2(0, 4)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_udolg")
 
 [node name="Alert" type="Label" parent="Farmer" unique_id=41929203]
@@ -377,6 +377,10 @@ offset_bottom = -25.0
 text = "!"
 label_settings = SubResource("LabelSettings_j5wjh")
 horizontal_alignment = 1
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Farmer" unique_id=1512077885]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
 
 [node name="Waypoints" type="Node2D" parent="." unique_id=1368546493]
 
@@ -391,6 +395,9 @@ position = Vector2(350, 320)
 
 [node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=1095931816]
 position = Vector2(150, 320)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=734084320]
+navigation_polygon = ExtResource("13_lc2xo")
 
 [connection signal="body_entered" from="Nest" to="Nest" method="_on_body_entered"]
 [connection signal="body_exited" from="Nest" to="Nest" method="_on_body_exited"]

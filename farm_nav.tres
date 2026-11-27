@@ -1,0 +1,10 @@
+[gd_resource type="NavigationPolygon" format=3 uid="uid://c03wxou3lbcc7"]
+
+[resource]
+vertices = PackedVector2Array(426, 123, 426, -14, 526.1094, -51, 528.8906, 383.07813, -240, -51, 91, -31, -240, 386.90625, 154, 192, 187, 114, 268, -14, 268, 123, 187, 2, 91, 2, -22, 116, 74, 116, 74, 192, 154, 114, -22, -31)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1, 5), PackedInt32Array(0, 3, 6, 7), PackedInt32Array(8, 9, 10, 7), PackedInt32Array(9, 8, 11), PackedInt32Array(11, 12, 5, 9), PackedInt32Array(13, 14, 15), PackedInt32Array(7, 16, 8), PackedInt32Array(7, 10, 0), PackedInt32Array(15, 7, 6), PackedInt32Array(15, 6, 4, 13), PackedInt32Array(17, 13, 4), PackedInt32Array(1, 9, 5), PackedInt32Array(17, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-257, -68, -257, -68, 543, -68, 546, 400, -257, 404)])
+parsed_geometry_type = 1
+source_geometry_mode = 1
+source_geometry_group_name = &"nav_obstacles"
+agent_radius = 17.0

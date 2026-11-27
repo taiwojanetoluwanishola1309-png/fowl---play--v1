@@ -7,9 +7,11 @@ var chase_speed = 55
 var see_distance = 90
 @onready var bird= get_parent().get_node("player")
 @onready var alert = $Alert
+@onready var agent = $NavigationAgent2D
 var chasing = false
 var alarm_spot = Vector2.ZERO
 var alarm_time = 0.0
+var hunting = false
 
 
 
@@ -29,18 +31,20 @@ func _physics_process(delta):
 		if not chasing:
 			chasing = true
 			spotted()
-		velocity = global_position.direction_to(bird.global_position) * run
+		walk_to(bird.global_position, run)
+	elif hunting and not GameState.bird_home:
+			walk_to(bird.global_position, run)
 	elif alarm_time > 0:
 		chasing = false
 		alarm_time -= delta
-		velocity = global_position.direction_to(alarm_spot) *run
+		walk_to(alarm_spot, run)
 		if global_position.distance_to(alarm_spot) < 10:
 			alarm_time = 0
 			
 	else:
 		chasing = false
 		var goal= points[target]
-		velocity = global_position.direction_to(goal)* walk
+		walk_to (goal, walk)
 		if global_position.distance_to(goal)< 5:
 			target = (target+1)  % points.size()
 	move_and_slide()
@@ -51,6 +55,8 @@ func _physics_process(delta):
 		
 func _on_catch_area_body_entered(body: Node2D) -> void:
 	if body.name != "player":
+		return
+	if GameState.bird_home:
 		return
 	GameState.warnings +=1
 	if GameState.warnings >= GameState.max_warnings:
@@ -75,6 +81,25 @@ func spotted():
 	
 func hear_alarm(spot):
 	alarm_spot = spot
-	alarm_time = 10.0
+	alarm_time = 4.0 + global_position.distance_to(spot)/ chase_speed
 	spotted()
+	
+func walk_to (spot, how_fast):
+	if agent.target_position !=spot:
+		agent.target_position = spot
+	if agent.is_navigation_finished():
+		velocity = Vector2.ZERO
+		return
+	var next_step = agent.get_next_path_position()
+	velocity = global_position.direction_to(next_step) * how_fast
 		
+		
+func start_hunt():
+	hunting =true
+	spotted()
+	
+func nearest_flag():
+	var best = 0
+	for i in points.size():
+		if global_position.distance_to(points[i]) < global_position.distance_to(points[best]):
+			best = i

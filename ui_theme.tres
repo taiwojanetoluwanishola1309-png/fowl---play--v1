@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://phuxcxh8kxtu" path="res://button_normal.tres" id="1_2pn01"]
 [ext_resource type="StyleBox" uid="uid://dqwhjsmrelreq" path="res://button_focus.tres" id="1_5kxjo"]
-[ext_resource type="FontFile" uid="uid://hqpa84d2dqvp" path="res://fonts/Better VCR 9.0.1.ttf" id="1_touxu"]
+[ext_resource type="FontFile" uid="uid://hqpa84d2dqvp" path="res://Scene/fonts/Better VCR 9.0.1.ttf" id="1_touxu"]
 [ext_resource type="StyleBox" uid="uid://mtevgbfv7cpq" path="res://button_hover.tres" id="2_g7fvb"]
 [ext_resource type="StyleBox" uid="uid://bl8n27sshaxv6" path="res://button_pressed.tres" id="4_tpf0h"]
 [ext_resource type="StyleBox" uid="uid://dca3r1rwjcvkx" path="res://panel.tres" id="5_g7fvb"]
